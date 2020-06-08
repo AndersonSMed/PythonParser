@@ -1,4 +1,6 @@
 from data_parser.parsers.base_parser import BaseParser
+from data_parser.data_types.node import Node
+from data_parser.data_types.xml import XML
 
 
 class XMLParser(BaseParser):
@@ -12,18 +14,6 @@ class XMLParser(BaseParser):
         parent = None
         grandpa = None
         temp_string = ''
-        for char in self._raw_data:
-            if char == '\n':
-                continue
-            temp_string = '{}{}'.format(temp_string, char)
-            if self._is_a_tag(temp_string):
-                xml = XML(temp_string)
-                if xml.ending_tag:
-                    mapping.pop()
-                else:
-                    mapping.append(xml.tag_name)
-                    temp_dict
-                temp_string = ''
 
     def _is_a_tag(self, string):
         return string.endswith('>') and (string.startswith('<')
