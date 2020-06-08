@@ -2,6 +2,7 @@ import pytest
 
 
 from data_parser.data_types.xml import XML
+from data_parser.exceptions import InvalidXMLError
 
 
 def test_create_xml_with_opening_tag():
@@ -12,7 +13,7 @@ def test_create_xml_with_opening_tag():
 
 
 def test_create_xml_with_ending_tag():
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidXMLError):
         XML('</name>')
 
 
@@ -23,6 +24,7 @@ def test_create_xml_with_attributes():
         'age': 19
     }
     assert xml_object.attributes == expected_attributes
+
 
 def test_set_value():
     xml_object = XML('<test>')

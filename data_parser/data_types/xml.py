@@ -1,6 +1,9 @@
 import json
 
 
+from data_parser.exceptions import InvalidXMLError
+
+
 class XML:
     _error_messages = {
         'ending_tag': (
@@ -16,7 +19,9 @@ class XML:
 
     def _validate_tag(self, tag):
         if tag.startswith('</'):
-            raise ValueError(self._error_messages['ending_tag'])
+            raise InvalidXMLError(
+                self._error_messages['ending_tag']
+            )
 
     def _process_tag(self, tag):
         attribute_list = tag.replace('/', '')[1: -1].split(' ')
