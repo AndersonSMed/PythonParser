@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <people>
+    <name>Marry</name>
+  </people>
+  <people>
+    <name>John</name>
+  </people>
+  <people>
+    <name>Joseph</name>
+  </people>
+</root>
